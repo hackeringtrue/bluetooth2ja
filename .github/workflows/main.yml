@@ -1,3 +1,9 @@
+name: Android Build
+
+on:
+  push:
+  pull_request:
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -6,9 +12,7 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v4
         with:
-          distribution: temurin
-          java-version: 17
-      - name: Make Gradle wrapper executable
-        run: chmod +x ./gradlew
-      - name: Build APK
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Build with Gradle
         run: ./gradlew assembleDebug
