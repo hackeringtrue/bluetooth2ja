@@ -13,7 +13,7 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v4
         with:
-          distribution: 'temurin'
+          distribution: temurin
           java-version: '17'
 
       - name: Make Gradle wrapper executable
@@ -21,3 +21,10 @@ jobs:
 
       - name: Build APK
         run: ./gradlew assembleDebug
+
+      # ← Add this step right after the build
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: bluetooth-jammer-apk
+          path: app/build/outputs/apk/debug/app-debug.apk
