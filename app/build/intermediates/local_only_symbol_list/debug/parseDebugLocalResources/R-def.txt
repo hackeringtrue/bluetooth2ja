@@ -1,0 +1,37 @@
+R_DEF: Internal format may change without notice
+local
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+id buttonStartStop
+id deviceAddress
+id deviceIcon
+id deviceListView
+id deviceName
+id deviceType
+id editTextThreads
+id logTextView
+id radioBombardment
+id radioGroupAttackMode
+id radioL2cap
+id radioMultiVector
+id radioPairingSpam
+id radioRfcommFlood
+id radioRootDeauth
+id radioRootStackPoison
+id radioSdpFlood
+id scrollViewLog
+id signalIcon
+id signalStrength
+id switchLogView
+id textViewAddress
+id textViewDeviceCount
+id textViewDeviceName
+id textViewScanStatus
+layout activity_main
+layout attack_layout
+layout device_item
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+xml backup_rules
+xml data_extraction_rules

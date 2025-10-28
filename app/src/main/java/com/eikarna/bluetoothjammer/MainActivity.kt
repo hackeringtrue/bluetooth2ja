@@ -14,8 +14,12 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ListView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -23,13 +27,16 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import api.BluetoothDeviceInfo
 import api.ScanNearbyDevices
+import com.google.android.material.textview.MaterialTextView
 import java.util.Date
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var listView: ListView
-    private lateinit var deviceListAdapter: ArrayAdapter<String>
+    private lateinit var deviceListAdapter: DeviceListAdapter
     private lateinit var devices: List<BluetoothDeviceInfo>
+    private lateinit var textViewScanStatus: MaterialTextView
+    private lateinit var textViewDeviceCount: MaterialTextView
     private val scanner = ScanNearbyDevices.getInstance()
 
     companion object {
@@ -41,6 +48,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         listView = findViewById(R.id.deviceListView)
+        textViewScanStatus = findViewById(R.id.textViewScanStatus)
+        textViewDeviceCount = findViewById(R.id.textViewDeviceCount)
+
+        // Initialize custom adapter
+        deviceListAdapter = DeviceListAdapter(this, mutableListOf())
+        listView.adapter = deviceListAdapter
 
         // Check and request necessary permissions
         checkBluetoothStatusAndPermissions()
@@ -171,20 +184,71 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun startScanningForDevices() {
+        textViewScanStatus.text = "🔍 Scanning for devices..."
+        textViewDeviceCount.text = "0 found"
+        
         // Start scanning for nearby Bluetooth devices
         scanner.startScanning(this) { discoveredDevices ->
             devices = discoveredDevices
-            val deviceNames = devices.map { "${it.name} (${it.address})" }
-
-            // Set up ArrayAdapter to show the list of devices
-            deviceListAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, deviceNames)
-            listView.adapter = deviceListAdapter
+            textViewScanStatus.text = if (devices.isEmpty()) "No devices found" else "Scan complete!"
+            textViewDeviceCount.text = "${devices.size} found"
+            
+            // Update custom adapter
+            deviceListAdapter.clear()
+            deviceListAdapter.addAll(devices)
+            deviceListAdapter.notifyDataSetChanged()
 
             // Handle item click events
             listView.setOnItemClickListener { _, _, position, _ ->
                 val selectedDevice = devices[position]
                 showDeviceInfo(selectedDevice)
             }
+        }
+    }
+    
+    // Custom Adapter for Device List
+    private class DeviceListAdapter(context: Context, devices: MutableList<BluetoothDeviceInfo>) :
+        ArrayAdapter<BluetoothDeviceInfo>(context, R.layout.device_item, devices) {
+        
+        override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+            val device = getItem(position)
+            val view = convertView ?: LayoutInflater.from(context).inflate(R.layout.device_item, parent, false)
+            
+            val deviceIcon = view.findViewById<MaterialTextView>(R.id.deviceIcon)
+            val deviceName = view.findViewById<MaterialTextView>(R.id.deviceName)
+            val deviceAddress = view.findViewById<MaterialTextView>(R.id.deviceAddress)
+            val deviceType = view.findViewById<MaterialTextView>(R.id.deviceType)
+            val signalIcon = view.findViewById<MaterialTextView>(R.id.signalIcon)
+            val signalStrength = view.findViewById<MaterialTextView>(R.id.signalStrength)
+            
+            // Set device icon based on name
+            deviceIcon.text = when {
+                device?.name?.contains("headphone", ignoreCase = true) == true -> "🎧"
+                device?.name?.contains("speaker", ignoreCase = true) == true -> "🔊"
+                device?.name?.contains("watch", ignoreCase = true) == true -> "⌚"
+                device?.name?.contains("tv", ignoreCase = true) == true -> "📺"
+                device?.name?.contains("car", ignoreCase = true) == true -> "🚗"
+                else -> "📱"
+            }
+            
+            deviceName.text = device?.name ?: "Unknown Device"
+            deviceAddress.text = device?.address ?: "N/A"
+            
+            // Determine device type
+            val type = when {
+                device?.name?.contains("headphone", ignoreCase = true) == true -> "Audio Device"
+                device?.name?.contains("speaker", ignoreCase = true) == true -> "Audio Device"
+                device?.name?.contains("watch", ignoreCase = true) == true -> "Wearable"
+                device?.name?.contains("tv", ignoreCase = true) == true -> "Display"
+                else -> "Unknown Type"
+            }
+            deviceType.text = "Type: $type"
+            
+            // Signal strength (placeholder - would need RSSI in BluetoothDeviceInfo)
+            signalIcon.text = "📶"
+            signalStrength.text = "Nearby"
+            
+            return view
         }
     }
 

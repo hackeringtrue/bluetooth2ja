@@ -1,0 +1,211 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.eikarna.bluetoothjammer"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="24"
+9        android:targetSdkVersion="34" />
+10
+11    <!-- Request legacy Bluetooth permissions on older devices. -->
+12    <uses-permission android:name="android.permission.BLUETOOTH" />
+12-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:6:5-67
+12-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:6:22-65
+13    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+13-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:7:5-73
+13-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:7:22-71
+14
+15    <!--
+16         Needed only if your app looks for Bluetooth devices.
+17         If your app doesn't use Bluetooth scan results to derive physical
+18         location information, you can
+19         <a href="#assert-never-for-location">strongly assert that your app
+20         doesn't derive physical location</a>.
+21    -->
+22    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+22-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:14:5-73
+22-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:14:22-70
+23
+24    <!--
+25         Needed only if your app makes the device discoverable to Bluetooth
+26         devices.
+27    -->
+28    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
+28-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:18:5-78
+28-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:18:22-75
+29
+30    <!--
+31         Needed only if your app communicates with already-paired Bluetooth
+32         devices.
+33    -->
+34    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+34-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:22:5-76
+34-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:22:22-73
+35
+36    <!-- Needed only if your app uses Bluetooth scan results to derive physical location. -->
+37    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+37-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:25:5-79
+37-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:25:22-76
+38    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+38-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:26:5-81
+38-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:26:22-78
+39
+40    <!-- Needed for BluetoothJammer Application. -->
+41    <uses-feature
+41-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:29:5-86
+42        android:name="android.hardware.bluetooth"
+42-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:29:19-60
+43        android:required="true" />
+43-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:29:61-84
+44    <uses-feature
+44-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:30:5-89
+45        android:name="android.hardware.bluetooth_le"
+45-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:30:19-63
+46        android:required="true" />
+46-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:30:64-87
+47
+48    <permission
+48-->[androidx.core:core:1.13.0] C:\Users\phone\.gradle\caches\transforms-4\c99221a7a8d2ed62aea5a7863caea0d5\transformed\core-1.13.0\AndroidManifest.xml:22:5-24:47
+49        android:name="com.eikarna.bluetoothjammer.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+49-->[androidx.core:core:1.13.0] C:\Users\phone\.gradle\caches\transforms-4\c99221a7a8d2ed62aea5a7863caea0d5\transformed\core-1.13.0\AndroidManifest.xml:23:9-81
+50        android:protectionLevel="signature" />
+50-->[androidx.core:core:1.13.0] C:\Users\phone\.gradle\caches\transforms-4\c99221a7a8d2ed62aea5a7863caea0d5\transformed\core-1.13.0\AndroidManifest.xml:24:9-44
+51
+52    <uses-permission android:name="com.eikarna.bluetoothjammer.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+52-->[androidx.core:core:1.13.0] C:\Users\phone\.gradle\caches\transforms-4\c99221a7a8d2ed62aea5a7863caea0d5\transformed\core-1.13.0\AndroidManifest.xml:26:5-97
+52-->[androidx.core:core:1.13.0] C:\Users\phone\.gradle\caches\transforms-4\c99221a7a8d2ed62aea5a7863caea0d5\transformed\core-1.13.0\AndroidManifest.xml:26:22-94
+53
+54    <application
+54-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:32:5-57:19
+55        android:allowBackup="true"
+55-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:33:9-35
+56        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+56-->[androidx.core:core:1.13.0] C:\Users\phone\.gradle\caches\transforms-4\c99221a7a8d2ed62aea5a7863caea0d5\transformed\core-1.13.0\AndroidManifest.xml:28:18-86
+57        android:dataExtractionRules="@xml/data_extraction_rules"
+57-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:34:9-65
+58        android:debuggable="true"
+59        android:extractNativeLibs="false"
+60        android:fullBackupContent="@xml/backup_rules"
+60-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:35:9-54
+61        android:icon="@mipmap/ic_launcher"
+61-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:36:9-43
+62        android:label="@string/app_name"
+62-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:37:9-41
+63        android:roundIcon="@mipmap/ic_launcher_round"
+63-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:38:9-54
+64        android:supportsRtl="true"
+64-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:39:9-35
+65        android:theme="@style/Theme.Material3.DynamicColors.DayNight.NoActionBar" >
+65-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:40:9-82
+66        <activity
+66-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:42:9-51:20
+67            android:name="com.eikarna.bluetoothjammer.MainActivity"
+67-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:43:13-41
+68            android:exported="true"
+68-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:44:13-36
+69            android:label="@string/app_name"
+69-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:45:13-45
+70            android:theme="@style/Theme.Material3.DynamicColors.DayNight" >
+70-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:46:13-74
+71            <intent-filter>
+71-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:47:13-50:29
+72                <action android:name="android.intent.action.MAIN" />
+72-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:48:17-69
+72-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:48:25-66
+73
+74                <category android:name="android.intent.category.LAUNCHER" />
+74-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:49:17-77
+74-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:49:27-74
+75            </intent-filter>
+76        </activity>
+77        <activity
+77-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:52:9-56:20
+78            android:name="com.eikarna.bluetoothjammer.AttackActivity"
+78-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:53:13-43
+79            android:label="@string/app_name"
+79-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:54:13-45
+80            android:theme="@style/Theme.Material3.DynamicColors.DayNight.NoActionBar" >
+80-->C:\Users\phone\.android\bluetooth2jam\app\src\main\AndroidManifest.xml:55:13-86
+81        </activity>
+82        <activity
+82-->[androidx.compose.ui:ui-tooling-android:1.6.6] C:\Users\phone\.gradle\caches\transforms-4\0f7b0febc60c9d738cceac6744d322a4\transformed\ui-tooling-release\AndroidManifest.xml:23:9-25:39
+83            android:name="androidx.compose.ui.tooling.PreviewActivity"
+83-->[androidx.compose.ui:ui-tooling-android:1.6.6] C:\Users\phone\.gradle\caches\transforms-4\0f7b0febc60c9d738cceac6744d322a4\transformed\ui-tooling-release\AndroidManifest.xml:24:13-71
+84            android:exported="true" />
+84-->[androidx.compose.ui:ui-tooling-android:1.6.6] C:\Users\phone\.gradle\caches\transforms-4\0f7b0febc60c9d738cceac6744d322a4\transformed\ui-tooling-release\AndroidManifest.xml:25:13-36
+85        <activity
+85-->[androidx.compose.ui:ui-test-manifest:1.6.6] C:\Users\phone\.gradle\caches\transforms-4\44507c91ef2412d1b3742c3f9fc534e5\transformed\ui-test-manifest-1.6.6\AndroidManifest.xml:23:9-25:39
+86            android:name="androidx.activity.ComponentActivity"
+86-->[androidx.compose.ui:ui-test-manifest:1.6.6] C:\Users\phone\.gradle\caches\transforms-4\44507c91ef2412d1b3742c3f9fc534e5\transformed\ui-test-manifest-1.6.6\AndroidManifest.xml:24:13-63
+87            android:exported="true" />
+87-->[androidx.compose.ui:ui-test-manifest:1.6.6] C:\Users\phone\.gradle\caches\transforms-4\44507c91ef2412d1b3742c3f9fc534e5\transformed\ui-test-manifest-1.6.6\AndroidManifest.xml:25:13-36
+88
+89        <provider
+89-->[androidx.emoji2:emoji2:1.3.0] C:\Users\phone\.gradle\caches\transforms-4\50eca92523106b28596699a11fdfd509\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
+90            android:name="androidx.startup.InitializationProvider"
+90-->[androidx.emoji2:emoji2:1.3.0] C:\Users\phone\.gradle\caches\transforms-4\50eca92523106b28596699a11fdfd509\transformed\emoji2-1.3.0\AndroidManifest.xml:25:13-67
+91            android:authorities="com.eikarna.bluetoothjammer.androidx-startup"
+91-->[androidx.emoji2:emoji2:1.3.0] C:\Users\phone\.gradle\caches\transforms-4\50eca92523106b28596699a11fdfd509\transformed\emoji2-1.3.0\AndroidManifest.xml:26:13-68
+92            android:exported="false" >
+92-->[androidx.emoji2:emoji2:1.3.0] C:\Users\phone\.gradle\caches\transforms-4\50eca92523106b28596699a11fdfd509\transformed\emoji2-1.3.0\AndroidManifest.xml:27:13-37
+93            <meta-data
+93-->[androidx.emoji2:emoji2:1.3.0] C:\Users\phone\.gradle\caches\transforms-4\50eca92523106b28596699a11fdfd509\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
+94                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+94-->[androidx.emoji2:emoji2:1.3.0] C:\Users\phone\.gradle\caches\transforms-4\50eca92523106b28596699a11fdfd509\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
+95                android:value="androidx.startup" />
+95-->[androidx.emoji2:emoji2:1.3.0] C:\Users\phone\.gradle\caches\transforms-4\50eca92523106b28596699a11fdfd509\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
+96            <meta-data
+96-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\phone\.gradle\caches\transforms-4\67f36bc9891e19ad8819d632ff85342d\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:29:13-31:52
+97                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+97-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\phone\.gradle\caches\transforms-4\67f36bc9891e19ad8819d632ff85342d\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:30:17-78
+98                android:value="androidx.startup" />
+98-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\phone\.gradle\caches\transforms-4\67f36bc9891e19ad8819d632ff85342d\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:31:17-49
+99            <meta-data
+99-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\phone\.gradle\caches\transforms-4\7867c5b92a683fc0118347391769e483\transformed\profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
+100                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+100-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\phone\.gradle\caches\transforms-4\7867c5b92a683fc0118347391769e483\transformed\profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
+101                android:value="androidx.startup" />
+101-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\phone\.gradle\caches\transforms-4\7867c5b92a683fc0118347391769e483\transformed\profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
+102        </provider>
+103
+104        <receiver
+104-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\phone\.gradle\caches\transforms-4\7867c5b92a683fc0118347391769e483\transformed\profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
+105            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+105-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\phone\.gradle\caches\transforms-4\7867c5b92a683fc0118347391769e483\transformed\profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
+106            android:directBootAware="false"
+106-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\phone\.gradle\caches\transforms-4\7867c5b92a683fc0118347391769e483\transformed\profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
+107            android:enabled="true"
+107-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\phone\.gradle\caches\transforms-4\7867c5b92a683fc0118347391769e483\transformed\profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
+108            android:exported="true"
+108-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\phone\.gradle\caches\transforms-4\7867c5b92a683fc0118347391769e483\transformed\profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
+109            android:permission="android.permission.DUMP" >
+109-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\phone\.gradle\caches\transforms-4\7867c5b92a683fc0118347391769e483\transformed\profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
+110            <intent-filter>
+110-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\phone\.gradle\caches\transforms-4\7867c5b92a683fc0118347391769e483\transformed\profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
+111                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+111-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\phone\.gradle\caches\transforms-4\7867c5b92a683fc0118347391769e483\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
+111-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\phone\.gradle\caches\transforms-4\7867c5b92a683fc0118347391769e483\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
+112            </intent-filter>
+113            <intent-filter>
+113-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\phone\.gradle\caches\transforms-4\7867c5b92a683fc0118347391769e483\transformed\profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
+114                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+114-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\phone\.gradle\caches\transforms-4\7867c5b92a683fc0118347391769e483\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
+114-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\phone\.gradle\caches\transforms-4\7867c5b92a683fc0118347391769e483\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
+115            </intent-filter>
+116            <intent-filter>
+116-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\phone\.gradle\caches\transforms-4\7867c5b92a683fc0118347391769e483\transformed\profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
+117                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+117-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\phone\.gradle\caches\transforms-4\7867c5b92a683fc0118347391769e483\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
+117-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\phone\.gradle\caches\transforms-4\7867c5b92a683fc0118347391769e483\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
+118            </intent-filter>
+119            <intent-filter>
+119-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\phone\.gradle\caches\transforms-4\7867c5b92a683fc0118347391769e483\transformed\profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
+120                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+120-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\phone\.gradle\caches\transforms-4\7867c5b92a683fc0118347391769e483\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
+120-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\phone\.gradle\caches\transforms-4\7867c5b92a683fc0118347391769e483\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
+121            </intent-filter>
+122        </receiver>
+123    </application>
+124
+125</manifest>
